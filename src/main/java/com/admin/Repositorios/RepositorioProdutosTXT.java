@@ -38,7 +38,7 @@ public class RepositorioProdutosTXT implements IRepositorioProdutos{
     }
     public Produto buscar(String nome){
         for (Produto b : listar()){
-            if(b.getProduto().equalsIgnoreCase(nome)){
+            if(b.getNome().equalsIgnoreCase(nome)){
                 return b;
             }
         }
@@ -48,11 +48,10 @@ public class RepositorioProdutosTXT implements IRepositorioProdutos{
     public void atualizar(Produto prod){
         Vector<Produto> prod1 = listar();
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f))
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             for(Produto a : prod1){
-                if(a.getProduto().equalsIgnoreCase(prod1.getProduto())){
-                    escreverLinha(bw, prod1);
-                }
+                if(a.getNome().equalsIgnoreCase(prod1.getNome()))escreverLinha(bw, prod1);
+                else escreverLinha(bw, a);
             }
         }
     }
@@ -62,13 +61,13 @@ public class RepositorioProdutosTXT implements IRepositorioProdutos{
         String l = "";
         if(prod instanceof Monitor){
             Monitor m = (Monitor) prod;
-            l = "P;" + m.getProduto() + m.getUser() + ";" +";" + m.getDisp() + ";" + m.getMoniMarca() + ";" + m.getMoniCgr();
+            l = "P;" + m.getNome() + m.getUser() + ";" +";" + m.getDisp() + ";" + m.getMoniMarca() + ";" + m.getMoniCgr();
         }else if (prod instanceof Notebook){
             Notebook n = (Notebook) prod;
-            l = "N" + ";" + n.getProduto() + n.getProduto()+ ";" + ";" + n.getDisp()+ ";" + n.getNoteMarca() + ";" + n.getNoteCgr();
+            l = "N" + ";" + n.getNome() + ";" + ";" + n.getDisp()+ ";" + n.getNoteMarca() + ";" + n.getNoteCgr();
         }else if (prod instanceof Variado){
             Variado v = (Variado) prod;
-            l = "V" + ";" + v.getProduto() + ";" + v.getUser()+ ";" + v.getVarMarca() + ";" + v.getVarQuant();
+            l = "V" + ";" + v.getNome() + ";" + v.getUser()+ ";" + v.getVarMarca() + ";" + v.getVarQuant();
         }
         bw.write(l + "\n");
     }
