@@ -6,11 +6,14 @@ public class Variado extends Produto {
     protected String marca;
     protected int quant;
 
-    public Variado(String produto, String user, String marca){
-        super(produto, user);
+    public Variado(String produto, String user, String marca, boolean disp){
+        super(produto, user, disp);
         this.marca=marca;
     }
-    public String getMarca(){
+    public String getVarMarca(){
         return marca;
+    }
+    public int getVarQuant(){
+        return quant;
     }
 }

@@ -12,11 +12,18 @@ public abstract class Produto{
         this.disp = true;
     }
 
-    public String getProduto(){
+    public String getNome(){
         return produto;
     }
     public String getUser(){
         return user;
+    }
+    public boolean getDisp(){
+        return disp; 
+    }
+    public boolean setDisp(){
+        this.disp = disp;
+        return disp;
     }
 
 }
