@@ -4,10 +4,12 @@ public abstract class Produto{
     
     protected String produto;
     protected String user;
+    protected boolean disp;
     
-    public Produto(String produto, String user){
+    public Produto(String produto, String user, boolean disp){
         this.produto = produto;
         this.user = user;
+        this.disp = true;
     }
 
     public String getProduto(){
